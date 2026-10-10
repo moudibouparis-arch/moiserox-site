@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOISZEROX | Serveur Discord Officiel</title>
+  <meta name="description" content="MOISZEROX est une communauté cyber gaming, événements, tournois, salons vocaux et ambiance exclusive." />
+  <meta property="og:title" content="MOISZEROX | Serveur Discord Officiel" />
+  <meta property="og:description" content="Rejoins la communauté MOISZEROX et découvre des événements, des tournois et une ambiance unique !" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M33 72V25L50 50L67 25V72H56V42L50 52L44 42V72H33Z' fill='%2339ff14'/%3E%3C/svg%3E" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#39ff14',
+              emerald: '#00ff66',
+              dark: '#060a07',
+              card: '#0d140e',
+              border: '#1a2e1d',
+              metal: '#2a382c'
+            }
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            rajdhani: ['Rajdhani', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #060a07;
+      --card: rgba(13, 20, 14, 0.85);
+      --green: #39ff14;
+      --green-soft: rgba(57, 255, 20, 0.18);
+      --green-strong: #00ff66;
+      --line: rgba(57, 255, 20, 0.2);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .font-orbitron {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .glow-green {
+      box-shadow: 0 0 25px rgba(57, 255, 20, 0.45);
+    }
+
+    .glow-green-sm {
+      box-shadow: 0 0 12px rgba(57, 255, 20, 0.25);
+    }
+
+    .text-glow-green {
+      text-shadow: 0 0 15px rgba(57, 255, 20, 0.8), 0 0 30px rgba(0, 255, 102, 0.45);
+    }
+
+    .cyber-grid {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(57, 255, 20, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(57, 255, 20, 0.04) 1px, transparent 1px);
+    }
+
+    .glass-panel {
+      background: rgba(13, 20, 14, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(57, 255, 20, 0.2);
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(57, 255, 20, 0.45);
+    }
+
+    canvas#particles-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .rule-toggle i {
+      transition: transform 0.3s ease;
+    }
+
+    .section-title {
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen cyber-grid text-slate-200">
+  <canvas id="particles-canvas"></canvas>
+
+  <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-brand-border/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="#accueil" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-xl bg-black border border-brand-green/40 p-1.5 glow-green-sm transition-transform duration-300 group-hover:scale-110 flex items-center justify-center">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-brand-green filter drop-shadow-[0_0_8px_rgba(57,255,20,0.8)]">
+              <path d="M5 45 L20 45 A 5 5 0 0 1 25 50 A 5 5 0 0 1 20 55 L5 55" fill="none" stroke="#6b7280" stroke-width="4" stroke-linecap="round"/>
+              <path d="M12 40 L28 40" fill="none" stroke="#4b5563" stroke-width="3"/>
+              <polygon points="30,42 33,40 31,45" fill="#39ff14"/>
+              <polygon points="28,52 32,50 29,55" fill="#39ff14"/>
+
+              <path d="M33 72 L33 25 L50 50 L67 25 L67 72 L56 72 L56 42 L50 52 L44 42 L44 72 Z" fill="none" stroke="#39ff14" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M33 72 L33 25 L50 50 L67 25 L67 72 L56 72 L56 42 L50 52 L44 42 L44 72 Z" fill="#ffffff" opacity="0.9"/>
+
+              <polygon points="69,40 72,43 70,47" fill="#39ff14"/>
+              <polygon points="71,53 74,49 72,56" fill="#39ff14"/>
+              <path d="M95 45 L80 45 A 5 5 0 0 0 75 50 A 5 5 0 0 0 80 55 L95 55" fill="none" stroke="#6b7280" stroke-width="4" stroke-linecap="round"/>
+              <path d="M88 40 L72 40" fill="none" stroke="#4b5563" stroke-width="3"/>
+            </svg>
+          </div>
+          <span class="font-orbitron font-extrabold text-2xl tracking-widest text-white">
+            MOIS<span class="text-brand-green text-glow-green">ZEROX</span>
+          </span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 font-semibold text-lg">
+          <a href="#accueil" class="hover:text-brand-green transition-colors py-1">Accueil</a>
+          <a href="#about" class="hover:text-brand-green transition-colors py-1">À propos</a>
+          <a href="#features" class="hover:text-brand-green transition-colors py-1">Fonctionnalités</a>
+          <a href="#rules" class="hover:text-brand-green transition-colors py-1">Règles</a>
+          <a href="#roles" class="hover:text-brand-green transition-colors py-1">Rôles</a>
+        </nav>
+
+        <div class="hidden md:block">
+          <a href="https://discord.gg/jqSy8KRr9" target="_blank" rel="noopener noreferrer" class="relative inline-flex items-center justify-center px-6 py-2.5 font-orbitron font-bold text-sm text-white overflow-hidden rounded-lg group bg-gradient-to-r from-emerald-600 to-brand-green p-0.5 glow-green hover:scale-105 transition-all">
+            <span class="px-5 py-2 w-full h-full bg-brand-dark rounded-[6px] flex items-center gap-2 group-hover:bg-transparent transition-all">
+              <i class="fa-brands fa-discord text-lg text-brand-green group-hover:text-white"></i>
+              Rejoindre
+            </span>
+          </a>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-300 hover:text-brand-green focus:outline-none" aria-label="Ouvrir le menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-brand-border px-4 pt-3 pb-6 space-y-3">
+      <a href="#accueil" class="block py-2 text-lg font-semibold hover:text-brand-green">Accueil</a>
+      <a href="#about" class="block py-2 text-lg font-semibold hover:text-brand-green">À propos</a>
+      <a href="#features" class="block py-2 text-lg font-semibold hover:text-brand-green">Fonctionnalités</a>
+      <a href="#rules" class="block py-2 text-lg font-semibold hover:text-brand-green">Règles</a>
+      <a href="#roles" class="block py-2 text-lg font-semibold hover:text-brand-green">Rôles</a>
+      <a href="https://discord.gg/jqSy8KRr9" target="_blank" rel="noopener noreferrer" class="mt-4 w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-emerald-600 to-brand-green rounded-lg font-orbitron font-bold text-black">
+        <i class="fa-brands fa-discord text-xl"></i> Rejoindre MOISZEROX
+      </a>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <section id="accueil" class="relative pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div class="w-28 h-28 mx-auto mb-8 relative flex items-center justify-center">
+          <div class="absolute inset-0 rounded-full bg-brand-green/20 animate-ping"></div>
+          <div class="w-24 h-24 rounded-2xl bg-black border-2 border-brand-green/60 p-3 glow-green flex items-center justify-center relative z-10">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-brand-green filter drop-shadow-[0_0_12px_rgba(57,255,20,0.9)]">
+              <path d="M5 45 L20 45 A 5 5 0 0 1 25 50 A 5 5 0 0 1 20 55 L5 55" fill="none" stroke="#6b7280" stroke-width="5" stroke-linecap="round"/>
+              <path d="M12 40 L28 40" fill="none" stroke="#4b5563" stroke-width="3"/>
+              <polygon points="30,42 33,40 31,45" fill="#39ff14"/>
+              <polygon points="28,52 32,50 29,55" fill="#39ff14"/>
+              <path d="M33 72 L33 25 L50 50 L67 25 L67 72 L56 72 L56 42 L50 52 L44 42 L44 72 Z" fill="none" stroke="#39ff14" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+              <path d="M33 72 L33 25 L50 50 L67 25 L67 72 L56 72 L56 42 L50 52 L44 42 L44 72 Z" fill="#ffffff"/>
+              <polygon points="69,40 72,43 70,47" fill="#39ff14"/>
+              <polygon points="71,53 74,49 72,56" fill="#39ff14"/>
+              <path d="M95 45 L80 45 A 5 5 0 0 0 75 50 A 5 5 0 0 0 80 55 L95 55" fill="none" stroke="#6b7280" stroke-width="5" stroke-linecap="round"/>
+              <path d="M88 40 L72 40" fill="none" stroke="#4b5563" stroke-width="3"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border-brand-green/30 text-brand-green text-sm font-semibold mb-6">
+          <span class="w-2.5 h-2.5 rounded-full bg-brand-green animate-pulse"></span>
+          COMMUNAUTÉ GAMING & CYBER-CULTURE ACTIVE
+        </div>
+
+        <h1 class="font-orbitron text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-wider mb-6 leading-tight">
+          BRISANTS TOUTES LES LIMITES SUR <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-emerald-300 to-emerald-500 text-glow-green">
+            MOISZEROX
+          </span>
+        </h1>
+
+        <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-300 mb-10 leading-relaxed font-medium">
+          Rejoins un univers cyber-futuriste vert néon unique. Tournois exclusifs, salons vocaux de qualité, événements uniques et une communauté soudée t'attendent 24/7.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 mb-16">
+          <a href="https://discord.gg/jqSy8KRr9" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 via-brand-green to-emerald-400 text-black font-orbitron font-black text-lg flex items-center justify-center gap-3 shadow-lg glow-green hover:scale-105 transition-transform duration-300">
+            <i class="fa-brands fa-discord text-2xl text-black"></i>
+            REJOINDRE LE DISCORD
+          </a>
+          <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-white font-orbitron font-bold text-lg hover:border-brand-green transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-compass text-brand-green"></i>
+            DÉCOUVRIR
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          <div class="glass-panel p-5 rounded-2xl">
+            <div class="text-3xl sm:text-4xl font-orbitron font-bold text-brand-green text-glow-green" id="online-counter">1,420</div>
+            <div class="text-slate-400 text-sm sm:text-base font-semibold mt-1 flex items-center justify-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-brand-green"></span> Membres En Ligne
+            </div>
+          </div>
+          <div class="glass-panel p-5 rounded-2xl">
+            <div class="text-3xl sm:text-4xl font-orbitron font-bold text-emerald-400">8,950+</div>
+            <div class="text-slate-400 text-sm sm:text-base font-semibold mt-1 flex items-center justify-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Membres Totaux
+            </div>
+          </div>
+          <div class="col-span-2 md:col-span-1 glass-panel p-5 rounded-2xl">
+            <div class="text-3xl sm:text-4xl font-orbitron font-bold text-brand-green">24/7</div>
+            <div class="text-slate-400 text-sm sm:text-base font-semibold mt-1">Activité Continue</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-20 relative z-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="section-title font-orbitron text-3xl sm:text-5xl font-extrabold text-white mb-4">
+            À PROPOS DE <span class="text-brand-green text-glow-green">MOISZEROX</span>
+          </h2>
+          <div class="h-1 w-24 bg-gradient-to-r from-emerald-600 to-brand-green mx-auto rounded-full mb-6"></div>
+          <p class="text-slate-300 text-lg">
+            Créé par et pour des passionnés, MOISZEROX est bien plus qu'un simple serveur Discord. C'est un hub communautaire axé sur l'entraide, le divertissement et la compétition sans chaînes ni contraintes.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 rounded-xl bg-brand-green/10 border border-brand-green/40 flex items-center justify-center text-brand-green text-2xl mb-6">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <h3 class="font-orbitron text-xl font-bold text-white mb-3">Multi-Gaming & Esport</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Que tu sois joueur occasionnel ou compétiteur acharné, tu trouveras toujours des coéquipiers motivés pour jouer, évoluer et créer des moments mémorables.
+            </p>
+          </div>
+
+          <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-2xl mb-6">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h3 class="font-orbitron text-xl font-bold text-white mb-3">Événements & Tournois</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Des soirées gaming, des mini-jeux, des tournois réguliers et des récompenses qui motivent la communauté à rester active et présente.
+            </p>
+          </div>
+
+          <div class="glass-panel p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
+            <div class="w-14 h-14 rounded-xl bg-brand-green/10 border border-brand-green/40 flex items-center justify-center text-brand-green text-2xl mb-6">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <h3 class="font-orbitron text-xl font-bold text-white mb-3">Ambiance Respectueuse</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Une équipe de modération réactive garantit un espace sain, sans toxicité, où chacun peut s'exprimer librement et construire de vraies relations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-20 relative z-10 bg-brand-dark/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="section-title font-orbitron text-3xl sm:text-5xl font-extrabold text-white mb-4">
+            FONCTIONNALITÉS <span class="text-brand-green">&</span> AVANTAGES
+          </h2>
+          <div class="h-1 w-24 bg-gradient-to-r from-brand-green to-emerald-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="glass-panel p-6 rounded-xl border border-brand-border">
+            <i class="fa-solid fa-robot text-3xl text-brand-green mb-4"></i>
+            <h4 class="font-orbitron text-lg font-bold text-white mb-2">Bots Exclusifs</h4>
+            <p class="text-slate-400 text-sm">Économie, mini-jeux et outils uniques pour rendre la communauté plus vivante et active.</p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-xl border border-brand-border">
+            <i class="fa-solid fa-gift text-3xl text-emerald-400 mb-4"></i>
+            <h4 class="font-orbitron text-lg font-bold text-white mb-2">Giveaways Réguliers</h4>
+            <p class="text-slate-400 text-sm">Gagne des Nitro, des jeux, des cartes cadeaux et des privilèges spéciaux en rejoignant les événements.</p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-xl border border-brand-border">
+            <i class="fa-solid fa-headset text-3xl text-brand-green mb-4"></i>
+            <h4 class="font-orbitron text-lg font-bold text-white mb-2">Vocal Dynamique</h4>
+            <p class="text-slate-400 text-sm">Crée tes salons vocaux, discute librement, investis dans des échanges de qualité et de bonnes vibes.</p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-xl border border-brand-border">
+            <i class="fa-solid fa-shield-halved text-3xl text-emerald-400 mb-4"></i>
+            <h4 class="font-orbitron text-lg font-bold text-white mb-2">Sécurité Renforcée</h4>
+            <p class="text-slate-400 text-sm">Protection anti-raid, anti-spam et modération active pour un environnement agréable et sécurisé.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules" class="py-20 relative z-10">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="section-title font-orbitron text-3xl sm:text-5xl font-extrabold text-white mb-4">
+            RÈGLES DU <span class="text-brand-green">SERVEUR</span>
+          </h2>
+          <p class="text-slate-400">Afin de maintenir une communauté saine, chaque membre doit respecter ces consignes.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="glass-panel rounded-xl overflow-hidden border border-brand-border">
+            <button class="rule-toggle w-full p-5 text-left font-orbitron font-bold text-lg text-white flex justify-between items-center hover:text-brand-green transition-colors">
+              <span><span class="text-brand-green mr-3">01.</span> Respect et Courtoisie</span>
+              <i class="fa-solid fa-chevron-down text-brand-green"></i>
+            </button>
+            <div class="rule-content hidden px-5 pb-5 text-slate-300 leading-relaxed border-t border-brand-border/40 pt-3">
+              Les insultes, le harcèlement, le racisme, la homophobie et toute forme de discrimination sont strictement interdits sous peine de ban définitif.
+            </div>
+          </div>
+
+          <div class="glass-panel rounded-xl overflow-hidden border border-brand-border">
+            <button class="rule-toggle w-full p-5 text-left font-orbitron font-bold text-lg text-white flex justify-between items-center hover:text-brand-green transition-colors">
+              <span><span class="text-brand-green mr-3">02.</span> Pas de Spam ni de Pub Non Sollicitée</span>
+              <i class="fa-solid fa-chevron-down text-brand-green"></i>
+            </button>
+            <div class="rule-content hidden px-5 pb-5 text-slate-300 leading-relaxed border-t border-brand-border/40 pt-3">
+              La publicité en message privé (DM) ou dans les salons non appropriés est proscrite. Évitez également le spam de messages ou de mentions inutiles.
+            </div>
+          </div>
+
+          <div class="glass-panel rounded-xl overflow-hidden border border-brand-border">
+            <button class="rule-toggle w-full p-5 text-left font-orbitron font-bold text-lg text-white flex justify-between items-center hover:text-brand-green transition-colors">
+              <span><span class="text-brand-green mr-3">03.</span> Utilisation des Salons Dédiés</span>
+              <i class="fa-solid fa-chevron-down text-brand-green"></i>
+            </button>
+            <div class="rule-content hidden px-5 pb-5 text-slate-300 leading-relaxed border-t border-brand-border/40 pt-3">
+              Merci de poster vos messages, images et commandes de bots dans les salons appropriés afin de garder le serveur propre, ordonné et agréable à lire.
+            </div>
+          </div>
+
+          <div class="glass-panel rounded-xl overflow-hidden border border-brand-border">
+            <button class="rule-toggle w-full p-5 text-left font-orbitron font-bold text-lg text-white flex justify-between items-center hover:text-brand-green transition-colors">
+              <span><span class="text-brand-green mr-3">04.</span> Respect des Directives du Staff</span>
+              <i class="fa-solid fa-chevron-down text-brand-green"></i>
+            </button>
+            <div class="rule-content hidden px-5 pb-5 text-slate-300 leading-relaxed border-t border-brand-border/40 pt-3">
+              Les décisions prises par l'équipe de modération et d'administration sont finales. En cas de litige, veuillez ouvrir un ticket support ou contacter un membre du staff.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles" class="py-20 relative z-10 bg-brand-dark/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="section-title font-orbitron text-3xl sm:text-5xl font-extrabold text-white mb-4">
+            HIÉRARCHIE & <span class="text-brand-green">RÔLES</span>
+          </h2>
+          <p class="text-slate-400">Découvre la structure de la communauté MOISZEROX.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-red-500">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fa-solid fa-crown text-red-500 text-xl"></i>
+              <h3 class="font-orbitron font-bold text-lg text-red-500">FONDATEUR</h3>
+            </div>
+            <p class="text-slate-400 text-sm">Gestion globale et vision du projet MOISZEROX.</p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-emerald-400">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fa-solid fa-user-shield text-emerald-400 text-xl"></i>
+              <h3 class="font-orbitron font-bold text-lg text-emerald-400">STAFF / MODS</h3>
+            </div>
+            <p class="text-slate-400 text-sm">Assure l'animation, la sécurité et le respect des règles.</p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-brand-green">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fa-solid fa-gem text-brand-green text-xl"></i>
+              <h3 class="font-orbitron font-bold text-lg text-brand-green">BOOSTER VIP</h3>
+            </div>
+            <p class="text-slate-400 text-sm">Accès aux salons secrets, emojis exclusifs et privilèges vocaux.</p>
+          </div>
+
+          <div class="glass-panel p-6 rounded-2xl border-l-4 border-slate-400">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fa-solid fa-gamepad text-slate-300 text-xl"></i>
+              <h3 class="font-orbitron font-bold text-lg text-slate-300">MEMBRE ZEROX</h3>
+            </div>
+            <p class="text-slate-400 text-sm">Le cœur de la communauté ! Accès à l'ensemble des salons publics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 relative z-10">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-brand-green/40 glow-green relative overflow-hidden">
+          <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-4 text-center md:text-left">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-green/20 text-brand-green font-bold text-xs">
+                <span class="w-2 h-2 rounded-full bg-brand-green animate-ping"></span> SERVEUR EN LIGNE
+              </div>
+              <h3 class="font-orbitron text-3xl font-extrabold text-white">Prêt à rejoindre l'aventure ?</h3>
+              <p class="text-slate-300 max-w-md">
+                Installe-toi, choisis tes rôles de jeu et rejoins la discussion dès maintenant avec des milliers de membres.
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+              <a href="https://discord.gg/jqSy8KRr9" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-brand-green text-black font-orbitron font-black text-center hover:scale-105 transition-transform flex items-center justify-center gap-3 shadow-lg glow-green">
+                <i class="fa-brands fa-discord text-2xl text-black"></i>
+                Rejoindre Maintenant
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="glass-panel border-t border-brand-border/60 py-12 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-black border border-brand-green/50 p-1 flex items-center justify-center">
+            <svg viewBox="0 0 100 100" class="w-full h-full text-brand-green">
+              <path d="M33 72 V25 L50 50 L67 25 V72 H56 V42 L50 52 L44 42 V72 H33 Z" fill="#39ff14"/>
+            </svg>
+          </div>
+          <span class="font-orbitron font-bold text-lg text-white">MOIS<span class="text-brand-green">ZEROX</span></span>
+          <span class="text-slate-500 text-sm ml-2">© 2026. Tous droits réservés.</span>
+        </div>
+
+        <div class="flex items-center gap-6 text-xl">
+          <a href="https://discord.gg/jqSy8KRr9" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-brand-green transition-colors" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" class="text-slate-400 hover:text-brand-green transition-colors" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="text-slate-400 hover:text-brand-green transition-colors" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+          <a href="#" class="text-slate-400 hover:text-red-500 transition-colors" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="text-slate-400 hover:text-brand-green transition-colors" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const particles = [];
+    const particleCount = 45;
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 1,
+        color: Math.random() > 0.3 ? '#39ff14' : '#00ff66',
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        alpha: Math.random() * 0.7 + 0.2
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.rule-toggle').forEach((button) => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('i');
+
+        content.classList.toggle('hidden');
+        if (content.classList.contains('hidden')) {
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    let onlineCount = 1420;
+    const counterEl = document.getElementById('online-counter');
+
+    setInterval(() => {
+      const change = Math.floor(Math.random() * 5) - 2;
+      onlineCount = Math.max(1400, onlineCount + change);
+
+      if (counterEl) {
+        counterEl.textContent = onlineCount.toLocaleString();
+      }
+    }, 3000);
+  </script>
+</body>
+</html>
